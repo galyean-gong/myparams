@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	
+	<style type="text/css">
+		input{
+			margin-bottom: 20px
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<h1>Login Page</h1>
+	<form id='myform'>
+		<input type="text" name="user" placeholder="username" class="form-control">
+		<input type="password" name="pas" placeholder="password" class="form-control">
+		<input type="submit" value="submit" class="btn btn-success">
+	</form> 
+</div>
+<hr>
+<div class="container">
+	<h1>Regist Page</h1>
+	<form id='postform'>
+		<input type="text" name="user" placeholder="username" class="form-control">
+		<input type="password" name="pas" placeholder="password" class="form-control">
+		<input type="submit" value="submit" class="btn btn-success">
+	</form> 
+</div>
+</body>
+<script type="text/javascript" src='https://cdn.bootcss.com/jquery/3.2.1/jquery.js'></script>
+<script type="text/javascript">
+
+		$('#myform').submit(()=>{
+			$.ajax({
+
+				url:'http://localhost:3007/mylogin',
+				type:'GET',
+				data:$('#myform').serialize(),
+				dataType:'json',
+				success:(data)=>{
+					console.log(data)
+				},
+				error:(xhr,status,error)=>{
+					console.log(error)
+				}
+				
+			
+			})
+			return false;
+		});
+
+		$('#postform').submit(()=>{
+			$.ajax({
+				url:'http://localhost:3010/mylogin',
+				type:'POST',
+				data:$('#postform').serialize(),
+				//dataType:'json',
+				success:(data)=>{
+					console.log(data)
+				},
+				error:(xhr,status,error)=>{
+					console.log(error)
+				}
+
+
+
+
+			})
+
+			return false;
+
+		})
+		
+
+
+
+
+</script>
+</html>
